@@ -21,6 +21,12 @@ module Lita
           SlackIM.new(response_data["channel"]["id"], user_id)
         end
 
+        def channel_members(channel_id)
+          response_data = call_api("channels.info", channel: channel_id)
+
+          response_data["channel"]["members"]
+        end
+
         def send_attachments(room_or_user, attachments)
           call_api(
             "chat.postMessage",

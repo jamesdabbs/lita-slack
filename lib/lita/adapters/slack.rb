@@ -46,6 +46,13 @@ module Lita
         robot.trigger(:disconnected)
       end
 
+      def roster(room)
+        # TODO:
+        # * This should return Lita::User objects
+        # * Should probably also handle private rooms
+        API.new(config).channel_members(room.id)
+      end
+
       private
 
       attr_reader :rtm_connection
